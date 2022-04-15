@@ -1,0 +1,378 @@
+body {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	background: url(../IMG/fondo.png);
+	background-size: cover;
+	background-attachment: fixed;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+    float:left;
+	background: #D0702E;
+	padding: 10px;
+	display: block;
+	margin: 0 auto;
+	opacity: 0.88;
+}
+
+.nav{
+	float:left;
+	height:auto;
+	width: 300px;
+	padding:20px;
+	background: #D0702E;
+	opacity: 0.90;
+}
+
+.btn-crear{
+    width: 100%;
+    padding: 15px;
+    background-color: #ff6600;
+    border: 0px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #000000;
+}
+
+.btn-crear:hover,.btn-guardar:active{
+    color:rgb(0, 0, 0);
+    background-color: #ffb07c;
+    border-color: #ffb07c;
+}
+
+.btn-crear:focus{
+    box-shadow: 0 0 0 3px rgba(121,82,179,0.25);
+}
+
+.btn-consultar{
+    width: 100%;
+    padding: 15px;
+    background-color: #ff6600;
+    border: 0px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #000000;
+}
+
+.btn-consultar:hover,.btn-guardar:active{
+    color:rgb(0, 0, 0);
+    background-color: #ffb07c;
+    border-color: #ffb07c;
+}
+
+.btn-consultar:focus{
+    box-shadow: 0 0 0 3px rgba(121,82,179,0.25);
+}
+
+
+.Shadow-lg{
+    background: #D0702E;
+	padding: 10px;
+	opacity: 0.90;
+}
+
+input[type=number] {
+	width: 100%;
+	padding: 0.6em;
+	font-size: 1.1em;
+	color: black;
+	text-align: center;
+	-webkit-appearance: textfield !important;
+	margin: 0;
+	-moz-appearance: textfield !important;
+	font-family: 'Ubuntu', sans-serif;
+	background: gray;
+	border: none;
+    border-radius: 0px;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 0.6em;
+	font-size: 1.1em;
+	color: black;
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	background: gray;
+	border: none;
+    border-radius: 0px;
+}
+
+input[type=password] {
+	width: 100%;
+	padding: 0.6em;
+	font-size: 1.1em;
+	color: black;
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	background: gray;
+	border: none;
+    border-radius: 0px;
+}
+
+input[type=email] {
+	width: 100%;
+	padding: 0.6em;
+	font-size: 1.1em;
+	color: black;
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	background: gray;
+	border: none;
+    border-radius: 0px;
+} 
+
+input[type=submit] {
+	display: inline-block;
+	width: 200px;
+	height: 9px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	padding: 25px 24px;
+	border-radius: 900px;
+	border: 0;
+	color: #ffffff;
+	background: #D0702E;
+	font-size:0;
+}
+
+input[type=submit]:hover {
+	width: 210px;
+	height: 19px;
+	transition: all .9s ease;
+}
+
+input[type=submit].btnProductos {
+    background-image: url("../IMG/productos.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:5px;
+   }
+
+input[type=submit].btnProductos:hover {
+	width: 106%;
+	transition: all .9s ease;
+}
+
+input[type=submit].btnFacturacion {
+    background-image: url("../IMG/facturacion.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:5px;
+   }
+
+input[type=submit].btnFacturacion:hover {
+	width: 106%;
+	transition: all .9s ease;
+}
+
+input[type=submit].btnClientes {
+    background-image: url("../IMG/clientes.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnClientes:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+
+input[type=submit].btnProveedores {
+    background-image: url("../IMG/proveedores.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnProveedores:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+ 
+input[type=submit].btnUsuarios {
+    background-image: url("../IMG/usuarios.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnUsuarios:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+
+input[type=submit].btnVentas {
+    background-image: url("../IMG/ventas.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnVentas:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+   
+input[type=submit].btnReportes {
+    background-image: url("../IMG/reportes.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+   }
+   
+input[type=submit].btnReportes:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+   
+input[type=submit].btnConsolidados {
+    background-image: url("../IMG/consolidados.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnConsolidados:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+   
+input[type=submit].btnSalir {
+    background-image: url("../IMG/salir.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnSalir:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+   
+input[type=submit].btnImprimir {
+    background-image: url("../IMG/imprimir.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    width: 100%;
+    height: 85px;
+    padding: 0px;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+}
+   
+input[type=submit].btnImprimir:hover {
+    width: 106%;
+    transition: all .9s ease;
+}
+   
+
+
+input[type=submit].btnCargar {
+    background-image: url("../IMG/cargar.png");
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s;
+    margin-top:20px;
+}
+
+img.btnListadoClientes {
+    transition: all 0.5s;
+    margin-right:10px;
+    width:  90%;	
+    height: auto;
+    border-radius:5px;
+}
+   
+img.btnListadoClientes:hover {
+    width: 95%;
+    transition: all .9s ease;
+}
+   
+img.btnVentasCliente {
+   transition: all 0.5s;
+    margin-right:10px;
+    width:  90%;	
+    height: auto;
+    border-radius:5px;
+}
+   
+img.btnVentasCliente:hover {
+    width: 95%;
+    transition: all .9s ease;
+}
+
+input[type=submit].btn {
+    display: inline-block;
+	width: 200px;
+	height: 48px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	padding: 0px 10px;
+	border-radius: 0px;
+	border: 0;
+	color: #ffffff;
+	background: #D0702E;
+	font-size:15px;
+}

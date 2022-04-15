@@ -1,0 +1,304 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <link rel="shortcut icon" href="IMG/favicon.png" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Tienda La Generica - Bogota</title>
+    <style>
+      .container{
+        max-width: 1050px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="/IMG/header.png"class="img-fluid" alt="Tienda La Generica - Bogota">
+    </div>
+
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <h3>Bienvenido:
+          <% if (usuario) { %>
+            <span class="badge bg-warning"><%= usuario %></span>
+          <% } %>
+        </h3>
+      </li>
+      <li class="nav-item">
+        <form action="/productos" method="GET">
+          <input class="btnProductos" type="submit" name="btnProductos" id="btnProductos" value="btnProductos">
+        </form>
+        </li>
+        <li class="nav-item">
+          <form action="/proveedores" method="GET">
+            <input class="btnProveedores" type="submit" name="btnProveedores" id="btnProveedores" value="btnProveedores">
+          </form>
+         </li>
+        <li class="nav-item">
+          <form action="/usuarios" method="GET">
+            <input class="btnUsuarios" type="submit" name="btnUsuarios" id="btnUsuarios" value="btnUsuarios">
+          </form>
+         </li>
+      <li class="nav-item">
+        <form action="/clientes" method="GET">
+          <input class="btnClientes" type="submit" name="btnClientes" id="btnClientes" value="btnClientes">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/ventas" method="GET">
+          <input class="btnVentas" type="submit" name="btnVentas" id="btnVentas" value="btnVentas">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/reportes" method="GET">
+          <input class="btnReportes" type="submit" name="btnReportes" id="btnReportes" value="btnReportes">
+       </form>
+      </li>
+      <li class="nav-item">
+        <form action="/facturacion" method="GET">
+          <input class="btnFacturacion" type="submit" name="btnFacturacion" id="btnFacturacion" value="btnFacturacion">
+       </form>
+      </li>
+      <li class="nav-item">
+        <form action="/consolidados" method="GET">
+          <input class="btnConsolidados" type="submit" name="btnConsolidados" id="btnConsolidados" value="btnConsolidados">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/logout" method="GET">
+          <input class="btnSalir" type="submit" name="btnSalir" id="btnSalir" value="btnSalir">
+        </form>
+      </li>
+    </ul>
+    
+    <div class="container">
+
+      <figure class="text-center">
+        <blockquote class="blockquote">
+          <h1>Proveedores por CSV</h1>
+        </blockquote>
+      </figure>
+
+          <div id="body">	
+              <form class="formulario" method="POST" action="proveedores/cargar" enctype="multipart/form-data">
+                  <div>
+                    <figure class="text-left">
+                      <blockquote class="blockquote">
+                        <h2>Elegir archivo csv:</h2>
+                      </blockquote>
+                    </figure>
+                    <input class="form-control form-control-lg" id="archivo" type="file" name="archivo" accept=".csv" onchange="return validarExt()" required/> 
+                  </div>
+                  <div class="cargar">
+
+                    <figure class="text-center">
+                      <blockquote class="blockquote">
+                        <input class="btnCargar" type="submit" value="cargar" name="btnCargar" id="btnCargar">
+                      </blockquote>
+                    </figure>
+
+                    
+                  </div>
+              </form>
+              </div>
+
+      <div class="Shadow-lg pb-3 md-5 bg-body rounded">
+
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <h1>Proveedor Individual</h1>
+          </blockquote>
+        </figure>
+        
+        <form id="form" action="/proveedores/crear" method="POST">
+          <table class="table mt-2">
+            <tbody>
+              <tr>
+                <td>
+                  <label class="form-label" for="txtNIT">NIT</label>
+                  <input class="form-control" type="number" name="txtNIT" id="txtNIT" maxlength="20" min="1" pattern="[0-9]+" required>
+                </td>
+                <td>
+                  <label class="form-label" for="txtTelefono">Telefono </label>
+                  <input class="form-control" type="number" name="txtTelefono" id="txtTelefono" maxlength="20" min="1" pattern="[0-9]+" required>
+                </td>
+              </tr>  
+              <tr>
+                <td>
+                  <label class="form-label" for="txtNombre">Nombre Proveedor </label>
+                  <input class="form-control" type="text" name="txtNombre" id="txtNombre" maxlength="50" required>
+                </td>
+                <td>
+                  <label class="form-label" for="txtCiudad">Ciudad </label>
+                  <input class="form-control" type="text" name="txtCiudad" id="txtCiudad" maxlength="50" required>
+               </td>
+              </tr>  
+              <tr>
+                <td>
+                  <label class="form-label" for="txtDireccion">Dirección </label>
+                  <input class="form-control" type="text" name="txtDireccion" id="txtDireccion" maxlength="50" required>
+               </td>
+              </tr> 
+            </table>          
+      </div> 
+      
+      <table class="table mt-2">
+              <button type="submit" class="w-100 btn btn-crear btn-lg"><i class="bi bi-person-plus"></i> Crear Proveedor</button>
+      </table>
+      
+      </form>
+       
+        <table id="tablaProveedores" class="display" style="text-align: center;">
+          <thead>
+            <tr>
+              <th>NIT</th>
+              <th>Nombre Proveedor</th>
+              <th>Ciudad</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%proveedores.forEach((proveedor) => {%>
+              <tr>
+                <td><%=proveedor._id%></td>
+                <td><%=proveedor.nombre_proveedores%></td>
+                <td><%=proveedor.ciudad_proveedores%></td>
+                <td><%=proveedor.direccion_proveedores%></td>
+                <td><%=proveedor.telefono_proveedores%></td>
+                <td>
+                  <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"></a>
+                  <a  onclick="confirmar(<%=proveedor._id%>)" class="btn btn-outline-danger bi bi-trash"></a> 
+                </td>
+              </tr>
+              <% })%>
+          </tbody>
+        </table>
+  
+
+    <table id="tablaProveedoresr" class="display" style="text-align: center;">
+      <thead>
+        <tr><h3>Proveedores Rechazados en el Cargue</h3></tr>
+        <tr>
+          <th>NIT Proveedor</th>
+          <th>Nombre Proveedor</th>
+          <th>Error Registrado</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%proveedoresrids.forEach((proveedorid) => {%>
+          <tr>
+            <td><%=proveedorid.nit_proveedoresrids%></td>
+            <td><%=proveedorid.nombre_proveedoresrids%></td>
+            <td><%=proveedorid.falla_proveedoresrids%></td>
+            <td><%=proveedorid.fecha_proveedoresrids%></td>
+          </tr>
+          <% })%>
+      </tbody>
+      <tr> 
+        <td colspan="4">
+          <a href='/proveedores/limpiar' class=" w-100 btn btn-limpiar btn-lg  bi bi-trash"> Limpiar Datos</a>
+        </td>
+      </tr>
+    </table>
+   
+</div>
+
+    <div id="modalProveedor" class="modal fade" tabindex="-1" aria-labelledby="modalProveedor" aria-hiden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Proveedor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form" action="/proveedores/modificar" method="POST">
+               <input type="number" name="txtNIT_editar" id="txtNIT_editar" hidden>
+              <div class="mb-3">
+                <label class="form-label" for="txtNombre">Nombre Proveedor </label>
+                <input class="form-control" type="text" name="txtNombre_editar" id="txtNombre_editar" maxlength="50" required>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label" for="txtciudad">Ciudad </label>
+                <input class="form-control" type="text" name="txtCiudad_editar" id="txtCiudad_editar"	maxlength="50" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="txtDireccion">Dirección </label>
+                <input class="form-control" type="text" name="txtDireccion_editar" id="txtDireccion_editar" maxlength="50" required>
+              </div> 
+
+              <div class="mb-3">
+              <label class="form-label" for="txtTelefono">Teléfono</label> 
+              <input class="form-control" type="number" name="txtTelefono_editar" id="txtTelefono_editar" maxlength="20" min="1" pattern="[0-9]+" required>
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Modificar</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript">document.oncontextmenu = function(){return false;}</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/codeproveedores.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"></script> 
+    <script >
+      $(document).ready(function() {
+      $('#tablaProveedores').DataTable({
+          "language": {
+            "decimal": ",",
+            "thousands": ".",
+            "lengthMenu": "Muestra _MENU_ registros por pagina",
+            "zeroRecords": "No hay registros en la tabla",
+            "info": "Mostrando Pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros en la tabla",
+            "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+            "search": "Buscar: ",
+            "paginate": {
+            "next": "Siguiente Pagina",
+            "previous": "Pagina Anterior"
+          }
+        }
+      });
+    });
+    </script>
+    <script >
+      $(document).ready(function() {
+      $('#tablaProveedoresr').DataTable({
+          "language": {
+            "decimal": ",",
+            "thousands": ".",
+            "lengthMenu": "Muestra _MENU_ registros por pagina",
+            "zeroRecords": "No hay registros en la tabla",
+            "info": "Mostrando Pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros en la tabla",
+            "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+            "search": "Buscar: ",
+            "paginate": {
+            "next": "Siguiente Pagina",
+            "previous": "Pagina Anterior"
+          }
+        }
+      });
+    });
+    </script>
+  </body>
+</html>

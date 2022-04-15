@@ -1,0 +1,161 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <link rel="shortcut icon" href="IMG/favicon.png" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Tienda La Generica - Bogota</title>
+    <style>
+      .container{
+        max-width: 1050px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="/IMG/header.png"class="img-fluid" alt="Tienda La Generica - Bogota">
+    </div>
+
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <h3>Bienvenido:
+          <% if (usuario) { %>
+            <span class="badge bg-warning"><%= usuario %></span>
+          <% } %>
+        </h3>
+      </li>
+      <li class="nav-item">
+        <form action="/productos" method="GET">
+          <input class="btnProductos" type="submit" name="btnProductos" id="btnProductos" value="btnProductos">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/proveedores" method="GET">
+          <input class="btnProveedores" type="submit" name="btnProveedores" id="btnProveedores" value="btnProveedores">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/usuarios" method="GET">
+          <input class="btnUsuarios" type="submit" name="btnUsuarios" id="btnUsuarios" value="btnUsuarios">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/clientes" method="GET">
+          <input class="btnClientes" type="submit" name="btnClientes" id="btnClientes" value="btnClientes">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/ventas" method="GET">
+          <input class="btnVentas" type="submit" name="btnVentas" id="btnVentas" value="btnVentas">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/reportes" method="GET">
+          <input class="btnReportes" type="submit" name="btnReportes" id="btnReportes" value="btnReportes">
+       </form>
+      </li>
+      <li class="nav-item">
+        <form action="/facturacion" method="GET">
+          <input class="btnFacturacion" type="submit" name="btnFacturacion" id="btnFacturacion" value="btnFacturacion">
+       </form>
+      </li>
+      <li class="nav-item">
+        <form action="/consolidados" method="GET">
+          <input class="btnConsolidados" type="submit" name="btnConsolidados" id="btnConsolidados" value="btnConsolidados">
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/logout" method="GET">
+          <input class="btnSalir" type="submit" name="btnSalir" id="btnSalir" value="btnSalir">
+        </form>
+      </li>
+    </ul>
+    
+    <div class="container">
+      <figure class="text-center">
+        <blockquote class="blockquote">
+          <h1>Total de Ventas por Ciudad</h1>
+        </blockquote>
+      </figure>
+
+      <div id="body">	
+        <table class="table table-striped table-hover" style="text-align: center;">
+          <thead>
+            <tr>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Valor Total Ventas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bogota</td>
+              <td>$ <%=consolidado_bogota%></td>
+            </tr>
+            <tr>
+              <td>Medellin</td>
+              <td>$ <%=consolidado_medellin%></td>
+            </tr>
+            <tr>
+              <td>Cali</td>
+              <td>$ <%=consolidado_cali%></td>
+            </tr>
+          </tbody>
+        </table> 
+		<div>
+			<canvas id="myChart" style="position: relative; height: 40vh; width: 80 vw; background-color: black;"></canvas>
+		</div>
+        <div class="container">
+          <div class="row">
+            <div class="col-6" style="text-align:right">
+              <h1><span class="badge bg-success">TOTAL VENTAS TIENDA $</span></h1>
+            </div>
+            <div class="col-6">
+              <input type="text" name="txtTotalVentas" id="txtTotalVentas" value="<%=ventatotal%>" maxlength="40" size="40" disabled>
+            </div>
+          </div>
+      </div> 
+    </div>
+
+   
+  <script type="text/javascript">document.oncontextmenu = function(){return false;}</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+	const ctx = document.getElementById('myChart');
+	const myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ['Bogota', 'Medellin', 'Cali'],
+			datasets: [{
+				label: 'Ventas',
+				data: [<%=consolidado_bogota%>, <%=consolidado_medellin%>, <%=consolidado_cali%>],
+				backgroundColor: [
+					'orange',
+					'yellow',
+					'green'
+				],
+				borderColor: [
+					'black',
+					'black',
+					'black'
+				],
+				borderWidth: 3
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+	</script>
+  </body>
+</html>
